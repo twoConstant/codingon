@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1_12_13", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "basic_sentence", "basic_sentence\basic_sentence.csproj", "{A723623D-A62E-4957-9C79-D76070F875C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "practice_12_17_1", "practice_12_17_1\practice_12_17_1.csproj", "{21ED7FF8-AACA-4992-9C76-AAC14939E7C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A723623D-A62E-4957-9C79-D76070F875C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A723623D-A62E-4957-9C79-D76070F875C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A723623D-A62E-4957-9C79-D76070F875C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21ED7FF8-AACA-4992-9C76-AAC14939E7C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21ED7FF8-AACA-4992-9C76-AAC14939E7C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21ED7FF8-AACA-4992-9C76-AAC14939E7C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21ED7FF8-AACA-4992-9C76-AAC14939E7C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
