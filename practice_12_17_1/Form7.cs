@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,11 +14,11 @@ namespace practice_12_17_1
 {
     public partial class Form7 : Form
     {
-        private readonly Random rnd = new Random();
 
         public Form7()
         {
             InitializeComponent();
+            
         }
 
         private void Form7_Load(object sender, EventArgs e)
@@ -27,36 +28,98 @@ namespace practice_12_17_1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // 유효성 검사
-            if(!(int.TryParse(textBox1.Text, out int inputNumOfStudent) && inputNumOfStudent >= 0))
+            textBox2.Text = "";
+            // 유효성 판단.
+            if(!(int.TryParse(textBox1.Text, out int size) && size > 0))
             {
-                // 숫자가 아닌경우와 0 이하의 숫자를 입력한 경우
                 return;
             }
 
-            int[] studentScore_arr = generateStudentScoreArr(inputNumOfStudent);
-            string strToPrint = makeStrToPrint(studentScore_arr);
-            textBox2.Text = strToPrint;
+            // Student만들면서 추가하기
+            for(int i = 0; i < size; i++)
+            {
+                Student student = new Student((i + 1) + "", StudentManager<Student>.getRandomScore());
+                studentManager.add(student);
+            }
+
+            // 출력하기
+            textBox2.Text = studentManager.ToString();
         }
 
-        private int[] generateStudentScoreArr(int num)
+        private class StudentManager<T> where T : Student
         {
-            int[] scoreArr = new int[num];
-            for(int i = 0; i < num; i++)
+            // 멤버 변수
+            private readonly List<T> list;
+            private readonly StringBuilder sb = new StringBuilder();
+            private static readonly Random random = new Random();
+
+            // 생성자
+            public StudentManager(List<T> list)
             {
-                scoreArr[i] = rnd.Next(0, 101);    // rnd : 멤버변수로 선언
+                this.list = list;
             }
-            return scoreArr;
+
+            // 메서드
+            // add
+            public void add(T student)
+            {
+                list.Add(student);
+            }
+
+            public static int getRandomScore()
+            {
+                return random.Next(0, 101);
+            }
+
+            private void clear()
+            {
+                list.Clear();
+            }
+
+            // toString
+            public override string ToString()
+            {
+                // StringBuilder 초기화
+                sb.Clear();
+
+                // while 루프를 사용하여 리스트 순회
+                int index = 0;
+                while (index < list.Count)
+                {
+                    T student = list[index];
+                    sb.AppendLine($"학생: {student.getName()}, 성적: {student.getScore()}");
+                    index++;
+                }
+
+                // 완성된 문자열 반환
+                clear();
+                return sb.ToString();
+            }
+
         }
 
-        private string makeStrToPrint(int[] studentScore_arr)
+        private class Student
         {
-            StringBuilder sb = new StringBuilder();
-            for(int i = 0; i < studentScore_arr.Length; i++)
+            private string name;
+            private int score;
+
+            public Student(string name, int score)
             {
-                sb.Append($"student{i + 1} score: {studentScore_arr[i]} \r\n");
+                this.name = name;
+                this.score = score;
             }
-            return sb.ToString();
+
+            // 메서드
+            public string getName()
+            {
+                return name;
+            }
+
+            public int getScore()
+            {
+                return score;
+            }
         }
+
     }
 }

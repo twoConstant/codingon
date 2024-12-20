@@ -1,4 +1,6 @@
-﻿namespace practice_12_17_1
+﻿using System.Collections.Generic;
+
+namespace practice_12_17_1
 {
     partial class Form7
     {
@@ -79,5 +81,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox2;
+        private StudentManager<Student> studentManager = new StudentManager<Student>(new List<Student>());
     }
 }
