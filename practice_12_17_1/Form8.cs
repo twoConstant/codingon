@@ -31,6 +31,28 @@ namespace practice_12_17_1
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.handsignOfUser = HandSign.SCISSORS;
+            this.handsignOfComputer = getRandomOfHandSign();
+            startGame(handsignOfUser, handsignOfComputer);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.handsignOfUser = HandSign.ROCK;
+            this.handsignOfComputer = getRandomOfHandSign();
+            startGame(handsignOfUser, handsignOfComputer);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.handsignOfUser = HandSign.PAPER;
+            this.handsignOfComputer = getRandomOfHandSign();
+            startGame(handsignOfUser, handsignOfComputer);
+        }
+
+        // 아래는 다 메서드입니다.
         // 무승부인가?
         private bool isDraw(HandSign handsignOfUser, HandSign HandsignOfComputer)
         {
@@ -66,123 +88,47 @@ namespace practice_12_17_1
             totalComputerWinCnt = 0;
         }
 
+        private void startGame(HandSign handsignOfUser, HandSign handsignOfComputer)
+        {
+            textBox1.Text = "";
+            textBox1.Text = $"유저: {handsignOfUser}, 컴퓨터: {handsignOfComputer} \r\n";
+            // 무승부인지 확인하기
+            if (isDraw(handsignOfUser, handsignOfComputer))
+            {
+                textBox1.Text += "무승부입니다.";
+                textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
+                return;
+            }
+
+
+            if (isUserWin(handsignOfUser, handsignOfComputer))
+            {
+
+                textBox1.Text += "유저의 승리입니다.";
+                totalUserWinCnt++;
+            }
+            else
+            {
+                // 컴퓨터가 이긴경우
+                textBox1.Text += "유저의 패배입니다.";
+                totalComputerWinCnt++;
+            }
+
+            textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
+
+            // 초기화 판단하기
+            if (totalUserWinCnt == 3 || totalComputerWinCnt == 3)
+            {
+                setNewGame();
+            }
+        }
+
         // 가위 바위 보 자동 생성기
         private HandSign getRandomOfHandSign()
         {
             return (HandSign)random.Next(0, 3);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.handsignOfUser = HandSign.SCISSORS;
-            this.handsignOfComputer = getRandomOfHandSign();
-
-            textBox1.Text = "";
-            textBox1.Text = $"유저: {handsignOfUser}, 컴퓨터: {handsignOfComputer} \r\n";
-            // 무승부인지 확인하기
-            if (isDraw(handsignOfUser, handsignOfComputer))
-            {
-                textBox1.Text += "무승부입니다.";
-                textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-                return;
-            }
-
-
-            if(isUserWin(handsignOfUser, handsignOfComputer))
-            {
-
-                textBox1.Text += "유저의 승리입니다.";
-                totalUserWinCnt++;
-            } else
-            {
-                // 컴퓨터가 이긴경우
-                textBox1.Text += "유저의 패배입니다.";
-                totalComputerWinCnt++;
-            }
-
-            textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-
-            // 초기화 판단하기
-            if(totalUserWinCnt == 3 || totalComputerWinCnt == 3)
-            {
-                setNewGame();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.handsignOfUser = HandSign.ROCK;
-            this.handsignOfComputer = getRandomOfHandSign();
-
-            textBox1.Text = "";
-            textBox1.Text = $"유저: {handsignOfUser}, 컴퓨터: {handsignOfComputer} \r\n";
-            // 무승부인지 확인하기
-            if (isDraw(handsignOfUser, handsignOfComputer))
-            {
-                textBox1.Text += "무승부입니다.";
-                textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-                return;
-            }
-
-
-            if (isUserWin(handsignOfUser, handsignOfComputer))
-            {
-
-                textBox1.Text += "유저의 승리입니다.";
-                totalUserWinCnt++;
-            }
-            else
-            {
-                // 컴퓨터가 이긴경우
-                textBox1.Text += "유저의 패배입니다.";
-                totalComputerWinCnt++;
-            }
-
-            textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-
-            // 초기화 판단하기
-            if (totalUserWinCnt == 3 || totalComputerWinCnt == 3)
-            {
-                setNewGame();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.handsignOfUser = HandSign.PAPER;
-            this.handsignOfComputer = getRandomOfHandSign();
-
-            textBox1.Text = "";
-            textBox1.Text = $"유저: {handsignOfUser}, 컴퓨터: {handsignOfComputer} \r\n";
-            // 무승부인지 확인하기
-            if (isDraw(handsignOfUser, handsignOfComputer))
-            {
-                textBox1.Text += "무승부입니다.";
-                textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-                return;
-            }
-
-
-            if (isUserWin(handsignOfUser, handsignOfComputer))
-            {
-
-                textBox1.Text += "유저의 승리입니다.";
-                totalUserWinCnt++;
-            }
-            else
-            {
-                // 컴퓨터가 이긴경우
-                textBox1.Text += "유저의 패배입니다.";
-                totalComputerWinCnt++;
-            }
-
-            textBox1.Text += $"유저: {totalUserWinCnt}, 컴퓨터: {totalComputerWinCnt}";
-
-            // 초기화 판단하기
-            if (totalUserWinCnt == 3 || totalComputerWinCnt == 3)
-            {
-                setNewGame();
-            }
-        }
+        
     }
 }
