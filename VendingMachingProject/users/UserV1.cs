@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VendingMachingProject.transaction_manager;
 using VendingMachingProject.User;
 using VendingMachingProject.vendingmaching;
+using System.Diagnostics;
 
 namespace VendingMachingProject.users
 {
@@ -37,22 +38,22 @@ namespace VendingMachingProject.users
 
         public void BuyDrink(string creditCardId, int quantity)
         {
-            Console.WriteLine($"[UserV1] BuyDrink called with CreditCardId: {creditCardId}, Quantity: {quantity}");
+            Debug.WriteLine($"[UserV1] BuyDrink called with CreditCardId: {creditCardId}, Quantity: {quantity}");
 
             if (!vm.IsEnoughToPay(creditCardId, quantity))
             {
-                Console.WriteLine("[UserV1] Purchase failed: Insufficient funds or stock.");
+                Debug.WriteLine("[UserV1] Purchase failed: Insufficient funds or stock.");
                 return;
             }
 
-            Console.WriteLine("[UserV1] Purchase approved. Proceeding to ServeDrink...");
-            vm.ServeDrink(creditCardId, quantity);
-            Console.WriteLine("[UserV1] Purchase completed successfully.");
+            Debug.WriteLine("[UserV1] Purchase approved. Proceeding to ServeDrink...");
+            vm.TryServeDrink(creditCardId, quantity);
+            Debug.WriteLine("[UserV1] Purchase completed successfully.");
         }
 
         public int ChargeDeposite(string depostieId, int moneyToDeposite)
         {
-            Console.WriteLine($"[UserV1] ChargeDeposite called with DepositeId: {depostieId}, MoneyToDeposite: {moneyToDeposite}");
+            Debug.WriteLine($"[UserV1] ChargeDeposite called with DepositeId: {depostieId}, MoneyToDeposite: {moneyToDeposite}");
             return tm.AddMontyToDeposite(depostieId, moneyToDeposite);
         }
 
@@ -69,12 +70,12 @@ namespace VendingMachingProject.users
         public string GetRandomCreditCardId()
         {
             // 카드의 리스트 사이즈 내에서 선택
-            return creditCards[random.Next(0, creditCards.Count)];
+            return creditCards[0];
         }
 
         public string GetRandomDepositeId()
         {
-            return deposites[random.Next(0, deposites.Count)];
+            return deposites[0];
         }
 
         public List<string> getCreditCards()

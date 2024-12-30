@@ -26,5 +26,11 @@ namespace VendingMachingProject.transaction_manager
 
         void UpdateLimit(string creditCard, int limit);
 
+        int GetBalance(string depositeId);
+
+        int GetCreditCardAccPrice(string creditCardId);
+
+        int GetCreditCardLimit(string creditCardId);
+
     }
 }

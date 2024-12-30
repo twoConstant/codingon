@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculatortest", "calculato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachingProject", "VendingMachingProject\VendingMachingProject.csproj", "{F77CF32C-4FE7-4082-9DC0-300AA07D2001}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineProjectUi", "VendingMachineProjectUi\VendingMachineProjectUi.csproj", "{9F5E1104-4238-45F0-A49C-94CB94FA80D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F77CF32C-4FE7-4082-9DC0-300AA07D2001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F77CF32C-4FE7-4082-9DC0-300AA07D2001}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F77CF32C-4FE7-4082-9DC0-300AA07D2001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F5E1104-4238-45F0-A49C-94CB94FA80D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F5E1104-4238-45F0-A49C-94CB94FA80D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F5E1104-4238-45F0-A49C-94CB94FA80D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F5E1104-4238-45F0-A49C-94CB94FA80D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

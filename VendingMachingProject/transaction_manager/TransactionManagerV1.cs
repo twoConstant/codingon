@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace VendingMachingProject.transaction_manager
 {
@@ -19,12 +20,12 @@ namespace VendingMachingProject.transaction_manager
             Console.WriteLine($"[TransactionManagerV1] AddMontyToDeposite called with DepositeId: {depositeId}, Money: {money}");
             if (money <= 0)
             {
-                Console.WriteLine("[TransactionManagerV1] Deposit failed: Cannot add non-positive amount.");
+                Debug.WriteLine("[TransactionManagerV1] Deposit failed: Cannot add non-positive amount.");
                 return -1;
             }
 
             int updatedBalance = depositeMap[depositeId] += money;
-            Console.WriteLine($"[TransactionManagerV1] Deposit successful. New Balance: {updatedBalance}");
+            Debug.WriteLine($"[TransactionManagerV1] Deposit successful. New Balance: {updatedBalance}");
             return updatedBalance;
         }
 
@@ -44,33 +45,33 @@ namespace VendingMachingProject.transaction_manager
 
         public bool IsEnoughToPay(string id, int priceToPay)
         {
-            Console.WriteLine($"[TransactionManagerV1] IsEnoughToPay called with Id: {id}, PriceToPay: {priceToPay}");
+            Debug.WriteLine($"[TransactionManagerV1] IsEnoughToPay called with Id: {id}, PriceToPay: {priceToPay}");
 
             if (depositeMap.ContainsKey(id))
             {
-                Console.WriteLine("[TransactionManagerV1] Checking deposit balance...");
+                Debug.WriteLine("[TransactionManagerV1] Checking deposit balance...");
                 if (GetBalanceOfDeposite(id) < priceToPay)
                 {
-                    Console.WriteLine("[TransactionManagerV1] Payment failed: Insufficient deposit balance.");
+                    Debug.WriteLine("[TransactionManagerV1] Payment failed: Insufficient deposit balance.");
                     return false;
                 }
-                Console.WriteLine("[TransactionManagerV1] Payment approved for deposit.");
+                Debug.WriteLine("[TransactionManagerV1] Payment approved for deposit.");
                 return true;
             }
             else if (creditCardMap.ContainsKey(id))
             {
-                Console.WriteLine("[TransactionManagerV1] Checking credit card limit...");
+                Debug.WriteLine("[TransactionManagerV1] Checking credit card limit...");
                 if (GetLimitOfCard(id) < GetCurExpenditureOfCard(id) + priceToPay)
                 {
-                    Console.WriteLine("[TransactionManagerV1] Payment failed: Credit card limit exceeded.");
+                    Debug.WriteLine("[TransactionManagerV1] Payment failed: Credit card limit exceeded.");
                     return false;
                 }
-                Console.WriteLine("[TransactionManagerV1] Payment approved for credit card.");
+                Debug.WriteLine("[TransactionManagerV1] Payment approved for credit card.");
                 return true;
             }
             else
             {
-                Console.WriteLine("[TransactionManagerV1] Payment failed: Unknown id.");
+                Debug.WriteLine("[TransactionManagerV1] Payment failed: Unknown id.");
                 return false;
             }
         }
@@ -134,7 +135,7 @@ namespace VendingMachingProject.transaction_manager
         {
             if(!depositeMap.ContainsKey(depositId))
             {
-                Console.WriteLine("입력하신 id는 예금계좌가 아닙니다.");
+                Debug.WriteLine("입력하신 id는 예금계좌가 아닙니다.");
                 return -1;
             }
 
@@ -146,7 +147,7 @@ namespace VendingMachingProject.transaction_manager
         {
             if(!depositeMap.ContainsKey(depositId))
             {
-                Console.WriteLine("입력하신 id는 예금계좌가 아닙니다.");
+                Debug.WriteLine("입력하신 id는 예금계좌가 아닙니다.");
                 return -1;
             }
 
@@ -157,7 +158,7 @@ namespace VendingMachingProject.transaction_manager
         {
             if(!creditCardMap.ContainsKey(creditCardId))
             {
-                Console.WriteLine("입력하신 id는 카드가 아닙니다.");
+                Debug.WriteLine("입력하신 id는 카드가 아닙니다.");
                 return -1;
             }
 
@@ -168,7 +169,7 @@ namespace VendingMachingProject.transaction_manager
         {
             if (!creditCardMap.ContainsKey(creditCardId))
             {
-                Console.WriteLine("입력하신 id는 카드가 아닙니다.");
+                Debug.WriteLine("입력하신 id는 카드가 아닙니다.");
                 return -1;
             }
 
@@ -183,6 +184,21 @@ namespace VendingMachingProject.transaction_manager
         public bool IsDeposite(string id)
         {
             return depositeMap.ContainsKey(id);
+        }
+
+        public int GetBalance(string depositeId)
+        {
+            return depositeMap[depositeId];
+        }
+
+        public int GetCreditCardAccPrice(string creditCardId)
+        {
+            return creditCardMap[creditCardId][0];
+        }
+
+        public int GetCreditCardLimit(string creditCardId)
+        {
+            return creditCardMap[creditCardId][1];
         }
     }
 }

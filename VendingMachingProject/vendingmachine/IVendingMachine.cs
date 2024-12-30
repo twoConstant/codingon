@@ -12,6 +12,18 @@ namespace VendingMachingProject.vendingmaching
 
         int AddStock(int numToAdd);
 
-        void ServeDrink(string id, int quantity);
+        bool TryServeDrink(string id, int quantity);
+
+        string GetName();
+
+        int GetStock();
+
+        int GetPrice();
+
+        int GetTotalSales();
+
+        DateTime GetCreateDate();
+
+        DateTime GetlastRepairDate();
     }
 }
