@@ -20,5 +20,11 @@ namespace GameProject.classes
             base.Attack(combatant);
             Console.WriteLine($"[Npc - Attack] di: {this.id}");
         }
+
+        public override void Talk()
+        {
+            base.Talk();
+            Console.Write($"{id}번 Slime \r\n");
+        }
     }
 }

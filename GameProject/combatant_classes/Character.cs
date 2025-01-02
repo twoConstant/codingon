@@ -24,5 +24,10 @@ namespace GameProject.classes
         {
             base.coreAttack(this.attackPoint);
         }
+
+        public override void Talk()
+        {
+            Console.Write("안녕 난 캐릭터 타입의 ");
+        }
     }
 }

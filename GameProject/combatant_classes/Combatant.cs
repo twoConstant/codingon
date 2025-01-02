@@ -27,5 +27,7 @@ namespace GameProject.classes
         {
             this.healthPoint -= damage;
         }
+
+        public abstract void Talk();
     }
 }

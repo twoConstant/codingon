@@ -20,5 +20,11 @@ namespace GameProject.classes
             base.Attack(combatant);
             Console.WriteLine($"[Npc - Attack] id: {this.id}, name: {this.name}");
         }
+
+        public override void Talk()
+        {
+            base.Talk();
+            Console.Write($"{id}번 Npc야 \r\n");
+        }
     }
 }

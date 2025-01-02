@@ -14,3 +14,14 @@ Orc orc = combatantManager.CreateOrc(100, 20, false, "부러진 방망이");
 BattleSystem battleSystem = BattleSystem.Instance;
 battleSystem.CharacterVsMonster(player, slime);
 battleSystem.CharacterVsMonster(npc, orc);
+
+// Talk() overriding practice
+player.Talk();
+npc.Talk();
+slime.Talk();
+orc.Talk();
+
+// LevelUp OverLoading practice
+player.LevelUp();
+player.LevelUp(10);
+player.LevelUp(20, 100);

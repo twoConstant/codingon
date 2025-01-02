@@ -20,5 +20,11 @@ namespace GameProject.classes
             base.Attack(combatant);
             Console.WriteLine($"[Orc - Attack] di: {this.id}");
         }
+
+        public override void Talk()
+        {
+            base.Talk();
+            Console.Write($"{id}번 Orc야 \r\n");
+        }
     }
 }
