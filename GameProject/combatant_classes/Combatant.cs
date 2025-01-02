@@ -23,7 +23,8 @@ namespace GameProject.classes
 
         // 메서드
         public abstract void Attack(Combatant combatant);
-        public virtual void coreAttack(int damage)
+
+        public virtual void CoreAttack(int damage)
         {
             this.healthPoint -= damage;
         }

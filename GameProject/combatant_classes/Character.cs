@@ -22,7 +22,7 @@ namespace GameProject.classes
 
         public override void Attack(Combatant combatant)
         {
-            base.coreAttack(this.attackPoint);
+            base.CoreAttack(this.attackPoint);
         }
 
         public override void Talk()
