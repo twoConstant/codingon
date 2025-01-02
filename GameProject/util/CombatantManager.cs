@@ -32,6 +32,14 @@ namespace GameProject.util
             }
         }
 
+        // 제네릭 객체 생성 메서드
+        //public TDerived Create<TDerived>(params object[] args) where TDerived : T
+        //{
+        //    TDerived instance = (TDerived)Activator.CreateInstance(typeof(TDerived), args); // 동적 생성
+        //    Add(instance);
+        //    return instance;
+        //}
+
         public Player CreatePlayer(string name, int healthPoint, int attackPoint)
         {
             Player player = new Player(size, name, healthPoint, attackPoint);
