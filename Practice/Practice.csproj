@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>Practice.Practice_01_01</StartupObject>
+    <StartupObject>Practice.Practice_01_02_2</StartupObject>
   </PropertyGroup>
 
 </Project>
