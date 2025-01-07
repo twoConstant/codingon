@@ -19,7 +19,7 @@ namespace practice_12_17_1
         {
             InitializeComponent();
 
-            // BackGroundWorker 초기화 및 이벤트 핸들러 등록
+            // BackgroundWorker 초기화 및 이벤트 핸들러 등록
             backgroundWorker = new BackgroundWorker
             {
                 WorkerReportsProgress = true,
