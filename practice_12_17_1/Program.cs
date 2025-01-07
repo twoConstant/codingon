@@ -16,7 +16,7 @@ namespace practice_12_17_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form10());
+            Application.Run(new Form11());
         }
     }
 }
