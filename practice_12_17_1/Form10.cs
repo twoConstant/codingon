@@ -51,7 +51,7 @@ namespace practice_12_17_1
             while (distance < 100)
             {
                 distance += 10;
-                Thread.Sleep(random.Next(0, 100));
+                Thread.Sleep(random.Next(100, 1000));
             }
 
             // Stopwatch 정지 및 실행 시간 계산
