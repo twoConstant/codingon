@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -42,8 +43,9 @@ namespace practice_12_17_1
 
         private void Dowork()
         {
-            // 현재 스레드 이름 확인 (디버깅용)
             string threadName = Thread.CurrentThread.Name ?? "Unnamed Thread";
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
 
             int distance = 0;
             while (distance < 100)
@@ -52,10 +54,14 @@ namespace practice_12_17_1
                 Thread.Sleep(random.Next(0, 100));
             }
 
-            // UI에 스레드 이름 출력
+            // Stopwatch 정지 및 실행 시간 계산
+            stopwatch.Stop();
+            double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
+
+            // UI에 스레드 이름과 실행 시간 출력
             Invoke(new Action(() =>
             {
-                listBox_results.Items.Add($"{threadName} finished!");
+                listBox_results.Items.Add($"{threadName} finished in {elapsedSeconds:F2} seconds!");
             }));
         }
     }
